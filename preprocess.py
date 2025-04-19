@@ -13,7 +13,6 @@ import argparse
 
 from datasets import Dataset
 from transformers import AutoTokenizer
-# from conversation import get_conv_template
 
 
 def load_data(in_file, max_recursion_depth=1):
