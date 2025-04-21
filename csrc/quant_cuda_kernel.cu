@@ -166,7 +166,7 @@ void vecquant3matmul_cherryq_cuda(
       mul.data_ptr<float>(),
       width, batch, vec_height, cherry_size
     );
-  } else if (!fp16 && group_size) {
+  } else if (!fp16 && group_size % 128 == 0) {
     VecQuant3MatMulKernelCherryQBatched<<<blocks, threads>>>(
       vec.data_ptr<float>(),
       qweight.data_ptr<uint8_t>(),
