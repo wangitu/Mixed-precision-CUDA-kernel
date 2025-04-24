@@ -284,8 +284,7 @@ __global__ void VecQuant3MatMulKernelCherryQBatchedG64(
       if (j == BLOCKWIDTH / 2) {
         r = res; res = 0;
       }
-
-      // cherry 参数不用 dequantize & mul
+      
       q1 = __ldg(&qweight[i]);
       res += ((q1 & 0x7) - 3.5f) * blockvec[j + 0];
       res += (((q1 >> 3) & 0x7) - 3.5f) * blockvec[j + 1];
